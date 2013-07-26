@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PipeLib", "PipeLib.vcproj", "{FD9D0C5C-5C41-426E-8758-4EC311F103B9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestPipeServer", "Test\TestPipeServer.vcproj", "{EAEC0DB2-BD1F-4AE3-B28C-70810F4821F2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FD9D0C5C-5C41-426E-8758-4EC311F103B9} = {FD9D0C5C-5C41-426E-8758-4EC311F103B9}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestPipeClient", "Test\TestPipeClient.vcproj", "{B5AA3AEA-4DC1-4E0C-B7D5-1EB1475D432F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FD9D0C5C-5C41-426E-8758-4EC311F103B9} = {FD9D0C5C-5C41-426E-8758-4EC311F103B9}
+		{EAEC0DB2-BD1F-4AE3-B28C-70810F4821F2} = {EAEC0DB2-BD1F-4AE3-B28C-70810F4821F2}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD9D0C5C-5C41-426E-8758-4EC311F103B9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FD9D0C5C-5C41-426E-8758-4EC311F103B9}.Debug|Win32.Build.0 = Debug|Win32
+		{FD9D0C5C-5C41-426E-8758-4EC311F103B9}.Release|Win32.ActiveCfg = Release|Win32
+		{FD9D0C5C-5C41-426E-8758-4EC311F103B9}.Release|Win32.Build.0 = Release|Win32
+		{EAEC0DB2-BD1F-4AE3-B28C-70810F4821F2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EAEC0DB2-BD1F-4AE3-B28C-70810F4821F2}.Debug|Win32.Build.0 = Debug|Win32
+		{EAEC0DB2-BD1F-4AE3-B28C-70810F4821F2}.Release|Win32.ActiveCfg = Release|Win32
+		{EAEC0DB2-BD1F-4AE3-B28C-70810F4821F2}.Release|Win32.Build.0 = Release|Win32
+		{B5AA3AEA-4DC1-4E0C-B7D5-1EB1475D432F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B5AA3AEA-4DC1-4E0C-B7D5-1EB1475D432F}.Debug|Win32.Build.0 = Debug|Win32
+		{B5AA3AEA-4DC1-4E0C-B7D5-1EB1475D432F}.Release|Win32.ActiveCfg = Release|Win32
+		{B5AA3AEA-4DC1-4E0C-B7D5-1EB1475D432F}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
