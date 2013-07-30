@@ -64,7 +64,7 @@ Section "Dragonfly Core" section_Core
   SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 "STR:Environment" /TIMEOUT=5000
   
   SetOutPath "$INSTDIR"
-  FILE "..\README"
+  FILE "..\README.md"
   FILE "..\LICENSE"
   FILE "..\AUTHORS"
   FILE "..\VERSION"
