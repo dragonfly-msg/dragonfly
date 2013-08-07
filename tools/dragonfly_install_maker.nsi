@@ -7,11 +7,13 @@ Name "Dragonfly" ;Define your own software name here
 ;!include "EnvVarUpdate.nsh"
 !include "MUI.nsh"
 !include "winmessages.nsh"
- 
+
 ;--------------------------------
 ;Configuration
 
   OutFile "Dragonfly_setup.exe"
+
+  !define MUI_ICON "dragonfly.ico"
 
   ;Folder selection page
   InstallDir "$PROGRAMFILES\${PRODUCT}"
