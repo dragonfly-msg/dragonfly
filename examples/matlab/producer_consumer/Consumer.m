@@ -5,10 +5,7 @@ function Consumer(mm_ip)
     Dragonfly_BaseDir = '../../..';
     addpath([Dragonfly_BaseDir '/lang/matlab']);
 
-    MessageTypes =  { ...
-                        'TEST_DATA' ...
-                        'EXIT' ...
-                    };
+    MessageTypes =  { 'TEST_DATA' };
 
     ConnectArgs = {'CONSUMER', Dragonfly_BaseDir, ['./message_defs.mat']};
     if exist('mm_ip','var') && ~isempty(mm_ip)
@@ -17,22 +14,15 @@ function Consumer(mm_ip)
 
     ConnectToMMM(ConnectArgs{:});
     Subscribe( MessageTypes{:})
-    SendModuleReady();
 
     disp 'Consumer running..'
-
 
     while( 1)
         M = ReadMessage( 'blocking');
         switch(M.msg_type)
             case 'TEST_DATA'
-                fprintf('Received  a=%d  b=%d  x=%f\n', M.data.a, M.data.b, M.data.x);
-            
-            case 'EXIT'
-                break; 
+                fprintf('Received message %s  Data = [a:%d  b:%d  x:%f]\n', M.msg_type, M.data.a, M.data.b, M.data.x);
         end
-        
-        pause(1);
     end
 
     DisconnectFromMMM

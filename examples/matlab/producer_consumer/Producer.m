@@ -5,10 +5,7 @@ function Producer(mm_ip)
     Dragonfly_BaseDir = '../../..';
     addpath([Dragonfly_BaseDir '/lang/matlab']);
 
-    MessageTypes =  { ...
-                        'REQUEST_TEST_DATA' ...
-                        'EXIT' ...
-                    };
+    MessageTypes =  { 'REQUEST_TEST_DATA' };
 
     ConnectArgs = {'PRODUCER', Dragonfly_BaseDir, ['./message_defs.mat']};
     if exist('mm_ip','var') && ~isempty(mm_ip)
@@ -17,27 +14,22 @@ function Producer(mm_ip)
 
     ConnectToMMM(ConnectArgs{:});
     Subscribe( MessageTypes{:})
-    SendModuleReady();
     
     disp 'Producer running..'
     
     a = 0;
-    b = 0;
-    x = 0.0;
 
     while( 1)
             
         msg = DF.MDF.TEST_DATA;
         msg.a = int32(a);
-        msg.b = int32(b);
-        msg.x = x;
+        msg.b = int32(-3);
+        msg.x = 1.234;
         SendMessage( 'TEST_DATA', msg);
         
-        fprintf('Sent reply\n');
+        fprintf('Sent message  Data = [a: %d, b: %d, x: %f]\n', msg.a, msg.b, msg.x);
 
         a = a + 1;
-        b = b - 3;
-        x = x + 1.234;
 
         pause(1);
     end
