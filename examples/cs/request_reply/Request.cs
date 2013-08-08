@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Media;
-using System.Threading;
 using Dragonfly;
 
 
@@ -23,9 +19,6 @@ namespace Request
             // Subscribe to messages
             mod.Subscribe(MT.TEST_DATA);
             mod.Subscribe(MT.EXIT);
-
-            // Let Application Manager know we are ready
-            mod.SendModuleReady();
 
             Console.WriteLine("Request running...");
 
@@ -61,7 +54,7 @@ namespace Request
                     KeepRunning = false;
                 }
 
-                Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(1000);
             }
 
             mod.DisconnectFromMMM();

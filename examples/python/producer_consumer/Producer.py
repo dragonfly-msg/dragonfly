@@ -7,8 +7,6 @@ import sys
 
 MID_PRODUCER = 10
 
-# Note: Producer must be started first
-
 if __name__ == "__main__":
     mod = PyDragonfly.Dragonfly_Module(MID_PRODUCER, 0)
     mod.ConnectToMMM("localhost:7111")

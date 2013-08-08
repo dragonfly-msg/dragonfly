@@ -7,8 +7,6 @@ import sys
 
 MID_CONSUMER = 11
 
-# Note: Consumer must be started second
-
 if __name__ == "__main__":
     mod = PyDragonfly.Dragonfly_Module(MID_CONSUMER, 0)
     mod.ConnectToMMM("localhost:7111")

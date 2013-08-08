@@ -17,7 +17,6 @@ function Request(mm_ip)
 
     ConnectToMMM(ConnectArgs{:});
     Subscribe( MessageTypes{:})
-    SendModuleReady();
 
     disp 'Request running..'
 
@@ -33,7 +32,6 @@ function Request(mm_ip)
             
             case 'EXIT'
                 break; 
-
         end
         
         pause(1);

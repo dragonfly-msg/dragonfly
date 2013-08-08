@@ -19,7 +19,6 @@ function Reply(mm_ip)
 
     ConnectToMMM(ConnectArgs{:});
     Subscribe( MessageTypes{:})
-    SendModuleReady();
     
     disp 'Reply running..'
 

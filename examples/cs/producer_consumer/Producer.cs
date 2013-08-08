@@ -10,6 +10,7 @@ namespace Producer
         {
             Module mod = new Module();
             mod.ConnectToMMM(MID.PRODUCER, "localhost:7111");
+            
             Console.WriteLine("Procuder running...");
 
             int a = 0;

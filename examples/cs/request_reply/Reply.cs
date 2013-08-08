@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Media;
-using System.Threading;
 using Dragonfly;
 
 
@@ -23,9 +19,6 @@ namespace Reply
             // Subscribe to messages
             mod.Subscribe(MT.REQUEST_TEST_DATA);
             mod.Subscribe(MT.EXIT);
-
-            // Let Application Manager know we are ready
-            mod.SendModuleReady();
 
             Console.WriteLine("Reply running...");
 

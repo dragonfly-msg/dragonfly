@@ -3,7 +3,6 @@
 #include "message_defs.h"
 
 
-
 int main( int argc, char *argv[])
 {
 	try 
@@ -13,8 +12,6 @@ int main( int argc, char *argv[])
 		mod.ConnectToMMM();
 		mod.Subscribe( MT_TEST_DATA);
 		mod.Subscribe( MT_EXIT);
-		mod.Subscribe( MT_KILL);
-		mod.SendModuleReady();
 		
         std::cout << "Request running...\n" << std::endl;
         
@@ -33,7 +30,6 @@ int main( int argc, char *argv[])
 					std::cout << "Data = [a: " << data.a << ", b: " << data.b << ", x: " << data.x << "]" << std::endl;
 					break;
 				case MT_EXIT:
-				case MT_KILL:
 					run = false;
 					break;
 			}

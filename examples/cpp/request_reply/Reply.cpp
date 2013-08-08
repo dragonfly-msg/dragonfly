@@ -13,10 +13,9 @@ int main( int argc, char *argv[])
 		
 		mod.Subscribe( MT_REQUEST_TEST_DATA);
 		mod.Subscribe( MT_EXIT);
-		mod.Subscribe( MT_KILL);
-		mod.SendModuleReady();
 		
         std::cout << "Reply running...\n" << std::endl;
+        
         int cnt = 1;
 		bool run = true;
 		while( run) {
@@ -28,16 +27,14 @@ int main( int argc, char *argv[])
 			MDF_TEST_DATA data;
 			switch( m.msg_type) {
 				case MT_REQUEST_TEST_DATA:
-					data.a = cnt;
+					data.a = cnt++;
 					data.b = 47;
 					data.x = 123.456;
 					M.SetData( &data, sizeof(data));
 					mod.SendMessageDF( &M);
 					std::cout << "Sent message " << M.msg_type << std::endl;
-                    cnt++;
 					break;
 				case MT_EXIT:
-				case MT_KILL:
 					run = false;
 					break;
 			}

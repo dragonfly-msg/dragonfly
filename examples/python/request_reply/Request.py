@@ -7,19 +7,17 @@ import sys
 
 MID_REQUEST = 11
 
-# Note: Consumer must be started second
+# Note: Request must be started second
 
 if __name__ == "__main__":
     mod = PyDragonfly.Dragonfly_Module(MID_REQUEST, 0)
     mod.ConnectToMMM()
     mod.Subscribe(mdefs.MT_TEST_DATA)
     mod.Subscribe(MT_EXIT)
-    mod.Subscribe(MT_KILL)
-    mod.SendModuleReady()
     
     print "Request running...\n"
     
-    for i in range(10):
+    while ( 1):
         mod.SendSignal(mdefs.MT_REQUEST_TEST_DATA)
         print("Sent request for data")
         msg = PyDragonfly.CMessage()

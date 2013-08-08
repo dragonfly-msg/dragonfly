@@ -7,15 +7,12 @@ import sys
 
 MID_REPLY = 10
 
-# Note: Producer must be started first
+# Note: Reply must be started first
 
 if __name__ == "__main__":
     mod = PyDragonfly.Dragonfly_Module(MID_REPLY, 0)
     mod.ConnectToMMM()
     mod.Subscribe(mdefs.MT_REQUEST_TEST_DATA)
-    mod.Subscribe(MT_EXIT)
-    mod.Subscribe(MT_KILL)
-    mod.SendModuleReady()
     
     print "Reply running...\n"
     
