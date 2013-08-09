@@ -67,8 +67,8 @@ Clone the repository and compile the source as follows:
 
 #### Windows
 
-We recommended that you use the provided installer (link) which contains prebuilt binaries and will also set
-environment variables automatically.
+We recommend that you use the installer provided in the [binaries repo](https://github.com/dragonfly-msg/binaries/blob/master/dragonfly_windows_setup.exe?raw=true) 
+which contains ready-to-use executables and will also set the necessary environment variables automatically.
 
 If you'd like to compile from source, clone the repository and follow these instructions:
 
@@ -135,8 +135,8 @@ Here is an example:
 
         #define MT_ROBOT_FEEDBACK               100
         
-The message body is a `struct` composed of one or more data fields which can be standard C data types and other structs.
-The struct has to have the same message name as the message type, and it needs to begin with `MDF_`. 
+The message body is a `struct` composed of one or more data fields which can be standard [C data types](http://en.wikipedia.org/wiki/C_data_types) 
+and other structs. The struct has to have the same message name as the message type, and it needs to begin with `MDF_`. 
 Here is an example:
         
         typedef struct {
@@ -161,14 +161,18 @@ Here is a more complex example:
           double        force[MAX_ROBOT_FEEDBACK_DIMS];
         } MDF_ROBOT_FEEDBACK;
 
-The message body needs to be manually padded for data alignment as necessary. The following is an example of how to align
-the message body for a 64-bit system:
+The message body fields need to be manually padded for [data alignment](http://en.wikipedia.org/wiki/Data_alignment) as necessary. 
+The following is an example of how to define the fields for 64-bit alignment:
 
         typedef struct {
           int source_index;    		
           int reserved;        		// for 64-bit alignment
           double source_timestamp;
         } MDF_RAW_SAMPLE_RESPONSE;
+
+If you are not sure how to align message fields on your system, it is safe to use 64-bit alignment. 
+Even if your system is not 64-bit, or if you have a mixture of systems with different alignment requirements,
+this practice will ensure proper alingment.
 
 To translate the message definitions in C header files into constructs in your choice of language, you need to process them 
 with the appropriate build script for your language. The build scripts are located in the `Dragonfly\tools` folder.

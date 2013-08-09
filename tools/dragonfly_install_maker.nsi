@@ -11,7 +11,7 @@ Name "Dragonfly" ;Define your own software name here
 ;--------------------------------
 ;Configuration
 
-  OutFile "Dragonfly_setup.exe"
+  OutFile "dragonfly_windows_setup.exe"
 
   !define MUI_ICON "dragonfly.ico"
 
