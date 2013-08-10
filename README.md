@@ -23,7 +23,7 @@ where the messages they consume originate.
 ## History
 
 Dragonfly was first developed, under the name Real-Time Messaging Architecture (RTMA), by Meel Velliste and Sagi Perel
-(others?) for use in the development of brain-computer interface development.
+for use in the development of brain-computer interface development.
 
 Publications whose experiments utilized Dragonfly Messaging include:
 - Velliste, M., Perel, S., Spalding, M. C., Whitford, A. S., & Schwartz, A. B. (2008). **Cortical control of a prosthetic arm for self-feeding.** Nature, 453(7198), 1098-101. doi:10.1038/nature06996
