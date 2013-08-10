@@ -20,6 +20,16 @@ The modules remain independent of each other and do not have to know which modul
 where the messages they consume originate.
 
 
+## History
+
+Dragonfly was first developed, under the name Real-Time Messaging Architecture (RTMA), by Meel Velliste and Sagi Perel
+(others?) for use in the development of brain-computer interface development.
+
+Publications whose experiments utilized Dragonfly Messaging include:
+- Velliste, M., Perel, S., Spalding, M. C., Whitford, A. S., & Schwartz, A. B. (2008). **Cortical control of a prosthetic arm for self-feeding.** Nature, 453(7198), 1098-101. doi:10.1038/nature06996
+- Clanton, S. T., McMorland, A. J. C., Zohny, Z., Jeffries, S. M., Rasmussen, R. G., Flesher, S. N., & Velliste, M. (2013). Brain-Computer Interface Research. In C. Guger, B. Z. Allison, & G. Edlinger (Eds.), Brain-Computer Interface Research (pp. 73-81). Berlin, Heidelberg: Springer Berlin Heidelberg. doi:10.1007/978-3-642-36083-1
+- Collinger, J. L., Wodlinger, B., Downey, J. E., Wang, W., Tyler-Kabara, E. C., Weber, D. J., McMorland, A. J. C., Velliste, M., Boninger, M. L., Schwartz, A. B. (2012). **High-performance neuroprosthetic control by an individual with tetraplegia.** The Lancet. doi:10.1016/S0140-6736(12)61816-9
+
 ## Prerequisites
 
 Bare minimum requirement is that you have a C++ compiler installed. On linux, you also need to have qt4-qmake 
