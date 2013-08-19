@@ -1,7 +1,7 @@
 ## Introduction
 
 Dragonfly is a simple messaging system that helps programmers create modular distributed 
-applications rapidly. It hides the complexities of socket programming and provides a uniform 
+applications rapidly. It hides the complexities of socket programming and data translation, also provides a uniform 
 high-level API in each of the supported programming languages (C++, C#, Python, Matlab) 
 and operating systems (Windows, Linux). Therefore, programmers are able to write each part of 
 their application in their programming language of choice and on their operating system of choice 
