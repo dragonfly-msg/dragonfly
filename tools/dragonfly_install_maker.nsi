@@ -4,9 +4,10 @@ Name "Dragonfly" ;Define your own software name here
 !define VERSION "1.0.0" ;Define your own software version here
 
 
-;!include "EnvVarUpdate.nsh"
 !include "MUI.nsh"
 !include "winmessages.nsh"
+!include "EnvVarUpdate.nsh"
+!include "LogicLib.nsh"
 
 ;--------------------------------
 ;Configuration
@@ -62,8 +63,19 @@ Section "Dragonfly Core" section_Core
   !define env_hklm 'HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"'
   ; set variable
   WriteRegExpandStr ${env_hklm} DRAGONFLY "$INSTDIR"
-  ; make sure windows knows about the change
-  SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 "STR:Environment" /TIMEOUT=5000
+
+  ReadEnvStr $R0 "PYTHONPATH" 
+  ${If} $R0 == ''
+      WriteRegExpandStr ${env_hklm} PYTHONPATH "$INSTDIR\lang\python"
+
+      ; make sure windows knows about the change
+      SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 "STR:Environment" /TIMEOUT=5000
+  ${Else}
+      ; make sure windows knows about the change
+      SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 "STR:Environment" /TIMEOUT=5000
+
+      ${EnvVarUpdate} $0 "PYTHONPATH" "A" "HKLM" "$INSTDIR\lang\python"
+  ${EndIf}
   
   SetOutPath "$INSTDIR"
   FILE "..\README.md"
@@ -188,6 +200,10 @@ Section "Uninstall"
   DeleteRegValue ${env_hklm} DRAGONFLY
   ; make sure windows knows about the change
   SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 "STR:Environment" /TIMEOUT=5000  
+  
+  ; Remove from PYTHONPATH  
+  ${un.EnvVarUpdate} $0 "PYTHONPATH" "R" "HKLM" "$INSTDIR\lang\python"
+  
 SectionEnd
                
 ;Function .onInstSuccess
