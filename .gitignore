@@ -14,6 +14,7 @@
 *.pyd
 *.mat
 *.cxx
+*.bin
 *.o
 *.a
 *.vshost*

@@ -47,6 +47,7 @@ see below further requirements:
 - Windows only, Visual Studio 2005 or later
 
 #### Matlab 
+- Version >= 2007b
 - Configure Matlab to recognize the Visual Studio C++ compiler
 
 
@@ -63,7 +64,8 @@ Clone the repository and compile the source as follows:
 
 2. Create `DRAGONFLY` environment variable and set it to where your Dragonfly folder is
 
-3. Add `Dragonfly/lib` to `LD_LIBRARY_PATH` or copy `Dragonfly/lib/libDragonfly.so` to `/usr/lib`
+3. Copy `Dragonfly/lib/libDragonfly.so` to `/usr/lib` or add `Dragonfly/lib` to `LD_LIBRARY_PATH`
+(See set_env_vars.sh in `tools' folder for reference)
 
 4. If you plan to use the matlab interface, start matlab and execute the following:
 
@@ -72,7 +74,8 @@ Clone the repository and compile the source as follows:
         cd Dragonfly/src/utils/LogReader
         make
 
-5. If you plan to use the python interface, add `Dragonfly/lang/python` to `PYTHONPATH` environment variable
+5. If you plan to use the python interface, append `Dragonfly/lang/python` to `PYTHONPATH` environment variable 
+(See set_env_vars.sh in `tools' folder for reference)
         
 
 #### Windows

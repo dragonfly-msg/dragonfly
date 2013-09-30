@@ -102,6 +102,9 @@ Section "Dragonfly Core" section_Core
   SetOutPath "$INSTDIR\lib"
   FILE "..\lib\*.lib"
   
+  SetOutPath "$INSTDIR\src\utils"
+  FILE /r "..\src\utils\*"
+  
   SetOutPath "$INSTDIR\tools"
   FILE "*.m"
   FILE "*.py"
