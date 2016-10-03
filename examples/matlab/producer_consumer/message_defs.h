@@ -1,5 +1,5 @@
-#define MID_PRODUCER            10
-#define MID_CONSUMER            20
+#define MID_PRODUCER            20
+#define MID_CONSUMER            21
 
 #define MT_REQUEST_TEST_DATA    101
 #define MT_TEST_DATA            102
