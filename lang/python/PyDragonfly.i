@@ -40,13 +40,12 @@
 	from ctypes import memmove, addressof, sizeof
 
 	def copy_from_msg(data, cmsg):
-		memmove(addressof(data), cmsg.data, sizeof(data))
+		#memmove(addressof(data), cmsg.data, sizeof(data))
+		cmsg.GetData(void_ptr(addressof(data)))
 
 	def copy_to_msg(data, cmsg):
 		cmsg.SetData(void_ptr(addressof(data)), sizeof(data))
 
-	def read_msg_data(data, cmsg):
-		cmsg.GetData(void_ptr(addressof(data)))
 %}
 
 %include "Dragonfly.h"
