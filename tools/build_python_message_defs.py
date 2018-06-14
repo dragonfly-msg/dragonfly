@@ -23,6 +23,6 @@ if __name__ == "__main__":
 
     elif os_name == "Windows":
         ctypesgen_path = os.environ['CTYPESGEN'] + '\ctypesgen.py'
-        output_file = os.path.join(base_dir, filename_root) + '.py'
+        output_file = filename_root + '.py'
         sp.call(['python', ctypesgen_path, '--includedir="../include"', '-a', '-o', output_file, input_file])
         
