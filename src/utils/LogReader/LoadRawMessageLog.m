@@ -50,7 +50,7 @@ try
                 % Fixed format messages should not have no data, but not a
                 % fatal condition, so issue a warning
                 MsgType = DF.MTN_by_MT{H.msg_type+1};
-                warning( 'Dragonfly:LogReader:MissingMessageData', ['Message has a data format defined but no actual data: msg_type = ' num2str(H.msg_type) ' [' MsgType ']']);
+                %warning( 'Dragonfly:LogReader:MissingMessageData', ['Message has a data format defined but no actual data: msg_type = ' num2str(H.msg_type) ' [' MsgType ']']);
             end
         end
         % Get message data if it has any
