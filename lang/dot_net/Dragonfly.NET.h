@@ -180,7 +180,7 @@ namespace Dragonfly {
 				mod->InitVariables( ModuleID, 0);
 				// Convert server name string from .NET to regular C string
 				int NumChars = ServerName->Length;
-				array<Char> ^charArray = ServerName->ToCharArray( );
+				cli::array<Char> ^charArray = ServerName->ToCharArray( );
 				char server_name[1024];
 				if( NumChars > 1023) throw gcnew Exception( "ServerName argument is too long, 1023 is max");
 				for( int i = 0; i < NumChars; i++) {

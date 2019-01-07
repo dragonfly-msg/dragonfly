@@ -77,7 +77,7 @@ namespace Dragonfly {
 								TotalDataBytes = NumElements * ElementSize;
 							} else { 
 							// If data is an array of objects, then get size of each element and add them up
-								array<Object^> ^objArray = safe_cast<array<Object^>^>( a);
+								cli::array<Object^> ^objArray = safe_cast<cli::array<Object^>^>( a);
 								for( i = 0; i < NumElements; i++) {
 									Element = objArray[i];
 									NumDataBytes = CountDataBytes( Element);
@@ -85,7 +85,7 @@ namespace Dragonfly {
 								}
 							}
 						} else { // If data is an non-array object, then treat it as a struct and get the size of each field and add them up (non-data fields such as methods and pointers are ignored)
-							array<FieldInfo^> ^fieldInfo = dataType->GetFields();
+							cli::array<FieldInfo^> ^fieldInfo = dataType->GetFields();
 							NumFields = fieldInfo->Length;
 							for( i = 0; i < NumFields; i++) {
 								Type ^fieldType = fieldInfo[i]->GetType();
@@ -197,7 +197,7 @@ namespace Dragonfly {
 					case TypeCode::String: {
 						String ^s = safe_cast<String^>( Data);
 						NumElements = s->Length;
-						array<Char> ^charArray = s->ToCharArray( );
+						cli::array<Char> ^charArray = s->ToCharArray( );
 						char *AsciiString = (char*) pOutput;
 						for( int i = 0; i < NumElements; i++) {
 							unsigned short UnicodeChar = charArray[i];
@@ -219,7 +219,7 @@ namespace Dragonfly {
 								pEnd = SerializePrimitiveArray( Data, elementType, NumElements, pOutput);
 							} else {
 								// If data is an array of objects, then we copy each element by calling this function recursively
-								array<Object^> ^objArray = safe_cast<array<Object^>^>( a);
+								cli::array<Object^> ^objArray = safe_cast<cli::array<Object^>^>( a);
 								pEnd = pOutput;
 								for( i = 0; i < NumElements; i++) {
 									Object ^Element = objArray[i];
@@ -227,7 +227,7 @@ namespace Dragonfly {
 								}
 							}
 						} else { // If data is an non-array object, then treat it as a struct and copy each field by calling this function recursively (non-data fields such as methods and pointers are ignored)
-							array<FieldInfo^> ^fieldInfo = dataType->GetFields();
+							cli::array<FieldInfo^> ^fieldInfo = dataType->GetFields();
 							NumFields = fieldInfo->Length;
 							pEnd = pOutput;
 							for( i = 0; i < NumFields; i++) {
@@ -285,18 +285,18 @@ namespace Dragonfly {
 			int numBytes = numElements * elementSize;
 			TypeCode ^typeCode = Type::GetTypeCode( primitiveType);
 			switch( *typeCode) {
-				case TypeCode::Double:  {array<Double> ^source = safe_cast<array<Double>^>( Data); pin_ptr<Double> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
-				case TypeCode::Single:  {array<Single> ^source = safe_cast<array<Single>^>( Data); pin_ptr<Single> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
-				case TypeCode::SByte:   {array<SByte> ^source = safe_cast<array<SByte>^>( Data); pin_ptr<SByte> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
-				case TypeCode::Int16:   {array<Int16> ^source = safe_cast<array<Int16>^>( Data); pin_ptr<Int16> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
-				case TypeCode::Int32:   {array<Int32> ^source = safe_cast<array<Int32>^>( Data); pin_ptr<Int32> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
-				case TypeCode::Int64:   {array<Int64> ^source = safe_cast<array<Int64>^>( Data); pin_ptr<Int64> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
-				case TypeCode::Byte:    {array<Byte> ^source = safe_cast<array<Byte>^>( Data); pin_ptr<Byte> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
-				case TypeCode::UInt16:  {array<UInt16> ^source = safe_cast<array<UInt16>^>( Data); pin_ptr<UInt16> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
-				case TypeCode::UInt32:  {array<UInt32> ^source = safe_cast<array<UInt32>^>( Data); pin_ptr<UInt32> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
-				case TypeCode::UInt64:  {array<UInt64> ^source = safe_cast<array<UInt64>^>( Data); pin_ptr<UInt64> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
-				case TypeCode::Boolean: {array<Boolean> ^source = safe_cast<array<Boolean>^>( Data); pin_ptr<Boolean> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
-				case TypeCode::Char:    {array<Char> ^source = safe_cast<array<Char>^>( Data); pin_ptr<Char> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
+				case TypeCode::Double:  {cli::array<Double> ^source = safe_cast<cli::array<Double>^>( Data); pin_ptr<Double> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
+				case TypeCode::Single:  {cli::array<Single> ^source = safe_cast<cli::array<Single>^>( Data); pin_ptr<Single> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
+				case TypeCode::SByte:   {cli::array<SByte> ^source = safe_cast<cli::array<SByte>^>( Data); pin_ptr<SByte> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
+				case TypeCode::Int16:   {cli::array<Int16> ^source = safe_cast<cli::array<Int16>^>( Data); pin_ptr<Int16> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
+				case TypeCode::Int32:   {cli::array<Int32> ^source = safe_cast<cli::array<Int32>^>( Data); pin_ptr<Int32> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
+				case TypeCode::Int64:   {cli::array<Int64> ^source = safe_cast<cli::array<Int64>^>( Data); pin_ptr<Int64> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
+				case TypeCode::Byte:    {cli::array<Byte> ^source = safe_cast<cli::array<Byte>^>( Data); pin_ptr<Byte> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
+				case TypeCode::UInt16:  {cli::array<UInt16> ^source = safe_cast<cli::array<UInt16>^>( Data); pin_ptr<UInt16> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
+				case TypeCode::UInt32:  {cli::array<UInt32> ^source = safe_cast<cli::array<UInt32>^>( Data); pin_ptr<UInt32> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
+				case TypeCode::UInt64:  {cli::array<UInt64> ^source = safe_cast<cli::array<UInt64>^>( Data); pin_ptr<UInt64> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
+				case TypeCode::Boolean: {cli::array<Boolean> ^source = safe_cast<cli::array<Boolean>^>( Data); pin_ptr<Boolean> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
+				case TypeCode::Char:    {cli::array<Char> ^source = safe_cast<cli::array<Char>^>( Data); pin_ptr<Char> pSource = &source[0]; memcpy( pOutput, pSource, numBytes); break;}
 				case TypeCode::String: throw gcnew Exception( "Attempting to access array of 'String' objects as primitive array");
 				case TypeCode::Object: throw gcnew Exception( "Attempting to access array of 'Object' type as primitive array");
 				default: throw gcnew Exception( "Unsupported data type");
@@ -349,7 +349,7 @@ namespace Dragonfly {
 								pEnd = DeserializePrimitiveArray( Output, elementType, NumElements, pInput);
 							} else {
 								// If data is an array of objects, then we copy each element by calling this function recursively
-								array<Object^> ^%objArray = safe_cast<array<Object^>^%>( a);
+								cli::array<Object^> ^%objArray = safe_cast<cli::array<Object^>^%>( a);
 								pEnd = pInput;
 								for( i = 0; i < NumElements; i++) {
 									Object ^Element = objArray[i];
@@ -358,7 +358,7 @@ namespace Dragonfly {
 								}
 							}
 						} else { // If data is an non-array object, then treat it as a struct and copy each field by calling this function recursively (non-data fields such as methods and pointers are ignored)
-							array<FieldInfo^> ^fieldInfo = dataType->GetFields();
+							cli::array<FieldInfo^> ^fieldInfo = dataType->GetFields();
 							NumFields = fieldInfo->Length;
 							pEnd = pInput;
 							for( i = 0; i < NumFields; i++) {
@@ -418,18 +418,18 @@ namespace Dragonfly {
 			int numBytes = numElements * elementSize;
 			TypeCode ^typeCode = Type::GetTypeCode( primitiveType);
 			switch( *typeCode) {
-				case TypeCode::Double:   {array<Double> ^output = safe_cast<array<Double>^>( Output); pin_ptr<Double> pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
-				case TypeCode::Single:   {array<Single> ^output = safe_cast<array<Single>^>( Output); pin_ptr<Single> pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
-				case TypeCode::SByte:    {array<SByte>  ^output = safe_cast<array<SByte>^>( Output);  pin_ptr<SByte>  pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
-				case TypeCode::Int16:    {array<Int16>  ^output = safe_cast<array<Int16>^>( Output);  pin_ptr<Int16>  pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
-				case TypeCode::Int32:    {array<Int32>  ^output = safe_cast<array<Int32>^>( Output);  pin_ptr<Int32>  pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
-				case TypeCode::Int64:    {array<Int64>  ^output = safe_cast<array<Int64>^>( Output);  pin_ptr<Int64>  pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
-				case TypeCode::Byte:     {array<Byte>   ^output = safe_cast<array<Byte>^>( Output);   pin_ptr<Byte>   pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
-				case TypeCode::UInt16:   {array<UInt16> ^output = safe_cast<array<UInt16>^>( Output); pin_ptr<UInt16> pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
-				case TypeCode::UInt32:   {array<UInt32> ^output = safe_cast<array<UInt32>^>( Output); pin_ptr<UInt32> pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
-				case TypeCode::UInt64:   {array<UInt64> ^output = safe_cast<array<UInt64>^>( Output); pin_ptr<UInt64> pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
-				case TypeCode::Boolean:  {array<Boolean> ^output = safe_cast<array<Boolean>^>( Output); pin_ptr<Boolean> pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
-				case TypeCode::Char:     {array<Char>   ^output = safe_cast<array<Char>^>( Output);   pin_ptr<Char>   pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
+				case TypeCode::Double:   {cli::array<Double> ^output = safe_cast<cli::array<Double>^>( Output); pin_ptr<Double> pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
+				case TypeCode::Single:   {cli::array<Single> ^output = safe_cast<cli::array<Single>^>( Output); pin_ptr<Single> pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
+				case TypeCode::SByte:    {cli::array<SByte>  ^output = safe_cast<cli::array<SByte>^>( Output);  pin_ptr<SByte>  pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
+				case TypeCode::Int16:    {cli::array<Int16>  ^output = safe_cast<cli::array<Int16>^>( Output);  pin_ptr<Int16>  pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
+				case TypeCode::Int32:    {cli::array<Int32>  ^output = safe_cast<cli::array<Int32>^>( Output);  pin_ptr<Int32>  pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
+				case TypeCode::Int64:    {cli::array<Int64>  ^output = safe_cast<cli::array<Int64>^>( Output);  pin_ptr<Int64>  pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
+				case TypeCode::Byte:     {cli::array<Byte>   ^output = safe_cast<cli::array<Byte>^>( Output);   pin_ptr<Byte>   pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
+				case TypeCode::UInt16:   {cli::array<UInt16> ^output = safe_cast<cli::array<UInt16>^>( Output); pin_ptr<UInt16> pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
+				case TypeCode::UInt32:   {cli::array<UInt32> ^output = safe_cast<cli::array<UInt32>^>( Output); pin_ptr<UInt32> pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
+				case TypeCode::UInt64:   {cli::array<UInt64> ^output = safe_cast<cli::array<UInt64>^>( Output); pin_ptr<UInt64> pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
+				case TypeCode::Boolean:  {cli::array<Boolean> ^output = safe_cast<cli::array<Boolean>^>( Output); pin_ptr<Boolean> pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
+				case TypeCode::Char:     {cli::array<Char>   ^output = safe_cast<cli::array<Char>^>( Output);   pin_ptr<Char>   pOutput = &output[0]; memcpy( pOutput, pInput, numBytes); break;}
 				case TypeCode::String: throw gcnew Exception( "Attempting to access array of 'String' objects as primitive array");
 				case TypeCode::Object: throw gcnew Exception( "Attempting to access array of 'Object' type as primitive array");
 				default: throw gcnew Exception( "Unsupported data type");
